@@ -1,0 +1,30 @@
+<div class="card-body px-0 pb-2">
+    <div class="table-responsive p-0">
+        <table class="table align-items-center mb-0">
+            <%= link_to new_role_path, class: "btn btn-primary" do %>
+                novo
+                <i class="fas fa-plus"></i>
+            <% end %>
+            <thead>
+                <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Username</th>
+                    <th class="text-secondary opacity-7"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @roles.each do |role|%>
+                    <tr>
+                    <td>
+                        <p class="text-xs font-weight-bold mb-0"><%= role.username %></p>
+                    </td>
+                    <td class="align-middle">
+                        <%= link_to 'Editar', edit_role_path(id: role.id), class: "text-secondary font-weight-bold text-xs" %>
+                        <%= link_to 'Deletar', role_path(id: role.id), method: :delete, data: { confirm: "Tem certeza?" }, class: "text-white bg-primary font-weight-bold text-xs" %>
+                    </td>
+                    </tr>
+                <% end %>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
