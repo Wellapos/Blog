@@ -5,7 +5,6 @@
                 <label class="form-label"></label>
                 <%= form.text_field :name, class: "form-control" %>
             </div>
-            <%= form.file_field :image %>
             <div class="input-group input-group-outline mb-3">
                 <label class="form-label"></label>
                 <%= form.text_field :summary, class: "form-control" %>
@@ -17,6 +16,9 @@
             <div class="input-group input-group-outline mb-3">
                 <label class="form-label"></label>
                 <%= form.select(:user_id, @users.collect { |user| [user.email, user.id]}, prompt: 'select')%>
+            </div>
+            <div class="input-group input-group-outline mb-3">
+                <%= form.file_field :image %>
             </div>
 
             <div class="text-center">

@@ -18,6 +18,9 @@
                         <td>
                         <p class="font-weight-bold mb-0"><%= post.name %></p>
                         </td>
+                        <td>
+                            <%= image_tag post.image.variant(resize_to_limit: [100, 100]) %>
+                        </td>
                         <td class="align-middle">
                         <%= link_to 'Editar', edit_post_path(id: post.id), class: "btn btn-sm text-secondary font-weight-bold" %>
                         <%= link_to 'Deletar', post_path(id: post.id), method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-sm text-white bg-primary font-weight-bold" %>
