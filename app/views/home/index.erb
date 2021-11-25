@@ -1,7 +1,6 @@
 <body>
 <div class="bg-grandient-dark">
   <span id='topo'></span>
-  <%= current_user %>
   <div class="container bg-grandient-light">
   HOME MUITO BEM FEITA
   </div>
@@ -24,114 +23,17 @@
   </div>
   <div class="container">
     <div class="row row-cols-1 row-cols-md-3 g-4">
-      <div class="col">
-        <div class="card h-100 bg-gradient-secondary shadow-dark border-radius-lg py-3 pe-1">
-          <img src="https://picsum.photos/200/309" class="position-absolute opacity-2 start-0 top-0 w-100 z-index-1 h-100" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">request.cardTitle</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Last updated Error 404 Not Found mins ago</small>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
-          <img src="https://picsum.photos/200/308" class="position-absolute opacity-2 start-0 top-0 w-100 z-index-1 h-100" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">request.cardTitle</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Last updated Error 404 Not Found mins ago</small>
+      <% @posts.each do |post|%>
+        <div class="col">
+          <div class="card h-100 bg-gradient-secondary shadow-dark border-radius-lg py-3 pe-1">
+            <%= image_tag post.image.variant(resize_to_limit: [492, 487]) %>
+            <div class="card-body">
+              <h5 class="card-title"><%= post.name %></h5>
+              <p class="card-text"><%= post.summary%></p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
-          <img src="https://picsum.photos/200/307" class="position-absolute opacity-2 start-0 top-0 w-100 z-index-1 h-100" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">request.cardTitle</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Last updated Error 404 Not Found mins ago</small>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
-          <img src="https://picsum.photos/200/306" class="position-absolute opacity-2 start-0 top-0 w-100 z-index-1 h-100" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">request.cardTitle</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Last updated Error 404 Not Found mins ago</small>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
-          <img src="https://picsum.photos/200/305" class="position-absolute opacity-2 start-0 top-0 w-100 z-index-1 h-100" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">request.cardTitle</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Last updated Error 404 Not Found mins ago</small>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
-          <img src="https://picsum.photos/200/304" class="position-absolute opacity-2 start-0 top-0 w-100 z-index-1 h-100" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">request.cardTitle</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Last updated Error 404 Not Found mins ago</small>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
-          <img src="https://picsum.photos/200/303" class="position-absolute opacity-2 start-0 top-0 w-100 z-index-1 h-100" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">request.cardTitle</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Last updated Error 404 Not Found mins ago</small>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
-          <img src="https://picsum.photos/200/302" class="position-absolute opacity-2 start-0 top-0 w-100 z-index-1 h-100" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">request.cardTitle</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Last updated Error 404 Not Found mins ago</small>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
-          <img src="https://picsum.photos/200/301" class="position-absolute opacity-2 start-0 top-0 w-100 z-index-1 h-100" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">request.cardTitle</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Last updated Error 404 Not Found mins ago</small>
-          </div>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

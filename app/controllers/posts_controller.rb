@@ -12,6 +12,7 @@ class PostsController < ApplicationController
 
     def create
         @post = Post.new(post_params)
+        @post.user_id = current_user.id
         get_variable
     
         if @post.save
@@ -73,7 +74,7 @@ class PostsController < ApplicationController
         @categories = Category.order(:name)
     end
     def post_params
-        params.require(:post).permit(:name, :summary, :content, :user_id, :image)
+        params.require(:post).permit(:name, :summary, :content, :image)
     end
 
 end
