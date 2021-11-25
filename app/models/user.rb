@@ -4,8 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable
   has_many :posts
-  validates :email, length: { maximum: 100,
-    too_long: "%{count} characters is the maximum allowed" }
-  validates :encrypted_password, length: { minimum: 6, maximum: 50,
-      too_long: "%{count} characters is the maximum allowed" }
+  has_one :ability
+  belongs_to :role
+
+  def admin?
+    role.id == 1
+  end
+  def comment?  
+    role.id == 2
+  end
 end
