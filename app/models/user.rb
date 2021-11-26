@@ -10,7 +10,9 @@ class User < ApplicationRecord
   def admin?
     role.id == 1
   end
+  
   def comment?  
     role.id == 2
   end
+
 end

@@ -3,15 +3,18 @@
         <%= form_with model: @post do |form| %>
             <div class="input-group input-group-outline mb-3">
                 <label class="form-label"></label>
-                <%= form.text_field :name, class: "form-control", length: 50 %>
+                <p class="text-rose m-2 font-weight-bold">  Título : </p>
+                <%= form.text_field :name, class: "form-control", maxlength: 50 %>
             </div>
             <div class="input-group input-group-outline mb-3">
+            <p class="text-rose m-2 font-weight-bold">  Resumo : </p>
                 <label class="form-label"></label>
-                <%= form.text_field :summary, class: "form-control", length: 300 %>
+                <%= form.text_field :summary, class: "form-control", maxlength: 300 %>
             </div>
             <div class="input-group input-group-outline mb-3">
+            <p class="text-rose m-2 font-weight-bold">  Conteúdo : </p>
                 <label class="form-label"></label>
-                <%= form.text_field :content, class: "form-control", length: 3000 %>
+                <%= form.text_area :content, class: "form-control", maxlength: 3000, size: "60x10" %>
             </div>
             <div class="input-group input-group-outline mb-3">
             <p class="text-rose m-2 font-weight-bold">  Categorias : </p>

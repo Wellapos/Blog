@@ -6,13 +6,8 @@ class Ability
   def initialize(user)
     if user.admin?
       can :manage, :all
-    end
-    if user.comment?
+    elsif user.comment?
       can :manage, Comment
-      can [:read, :update, :destroy], User
-    else
-      can :read, Post
-      can :read, Category
       can [:read, :update, :destroy], User
     end
   
