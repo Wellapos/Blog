@@ -1,0 +1,16 @@
+<div class="container">
+
+<h1 class="text-center" >
+    <%=h @post.name %>
+</h1>
+    <div class="img-fluid">
+        <%=image_tag @post.image.variant(resize_to_limit: [922, 650])%>
+    </div>
+<h2>
+    <b></b>
+    <%=h @post.content %>
+</h2>
+
+
+<%= link_to 'Voltar', root_path %>
+</div>

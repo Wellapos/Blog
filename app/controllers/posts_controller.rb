@@ -1,11 +1,7 @@
 class PostsController < ApplicationController
     load_and_authorize_resource
+    layout 'admin', except: :show
 
-    def show
-
-        @post = Post.find(params[:id])
-        
-    end
 
     def index
         @posts = Post.order(:name)

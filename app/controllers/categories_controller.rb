@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
     load_and_authorize_resource
+    layout 'admin'
 
     def index
         @categories = Category.order(:name)

@@ -1,5 +1,6 @@
 class RolesController < ApplicationController
     load_and_authorize_resource
+    layout 'admin'
 
     def index
         @roles = Role.order(:username)
@@ -31,15 +32,6 @@ class RolesController < ApplicationController
         else
             render :edit, status: :unprocessable_entity
         end
-    end
-
-    def destroy
-        @role = Role.find(params[:id])
-        
-        if @role.present?
-            @role.destroy 
-        end
-        redirect_to roles_path
     end
     
     private

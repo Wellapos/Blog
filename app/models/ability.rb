@@ -9,6 +9,8 @@ class Ability
     elsif user.comment?
       can :manage, Comment
       can [:read, :update, :destroy], User
+    else
+      can :show, Post
     end
   
     
