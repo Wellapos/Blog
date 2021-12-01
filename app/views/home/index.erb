@@ -10,11 +10,11 @@
       <div class="col">
         <div class="card bg-gradient-secondary shadow-dark">
           <div class="card-body">
-            <%= link_to home_post_path(id: params[:id]),class:"card h-100 bg-gradient-secondary" do%>
+            <%= link_to home_post_path(id: post.id),class:"card h-100 bg-gradient-secondary" do%>
               <%=image_tag post.image.variant(resize_to_fill: [492, 487])%>
             <%end%>
-            <h5 class="card-title"><%= link_to post.name, home_post_path(id: params[:id])%></h5>
-            <p class="card-text"><%= link_to post.summary, home_post_path(id: params[:id])%></p>
+            <h5 class="card-title"><%= link_to post.name, home_post_path(id: post.id)%></h5>
+            <p class="card-text"><%= link_to post.summary, home_post_path(id: post.id)%></p>
           </div>
         </div>
       </div>

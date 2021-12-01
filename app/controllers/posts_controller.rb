@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
+    before_action :authenticate_user!
     load_and_authorize_resource
     layout 'admin', except: :show
-
 
     def index
         @posts = Post.order(:name)
