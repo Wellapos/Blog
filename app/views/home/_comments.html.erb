@@ -1,0 +1,6 @@
+<% @comments.each do |comment|%>
+<br>
+    <%= comment.user.email%>
+<hr>
+    <%= comment.content%>
+<% end %>

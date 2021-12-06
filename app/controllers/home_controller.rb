@@ -4,5 +4,7 @@ class HomeController < ApplicationController
     end
     def post
         @post = Post.find(params[:id])
+        @comments = Comment.order(:created_at)
+        @comment = Comment.new
     end
 end
