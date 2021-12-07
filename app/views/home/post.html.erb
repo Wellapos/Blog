@@ -8,17 +8,13 @@
     <div id='lista-comentarios'>
         <%= render partial: 'comments' %>
     </div>
-    <%= form_with model: @comment, local: false do |form| %>
+    <%= form_with model: @comment, local: false, :html => { :id => 'comentarios' } do |form| %>
         <div class="input-group input-group-outline mb-3">
             <label class="form-label"></label>
             <%= form.text_area :content, class: "form-control", size: "60x10"%>
         </div>
         <%= form.hidden_field :post_id, value: @post.id %>
-        
-        <div class="text-center">
-            <%= form.submit 'Salvar', class: "btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0" %>
-            <%= link_to 'Cancelar', comments_path, class: "btn btn-lg bg-gradient-light text-primary btn-lg w-100 mt-4 mb-0" %>
-        </div>
+        <%= form.submit 'Salvar', class: "btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0" %>
+        <%= link_to '', comments_path, class: "btn btn-lg bg-gradient-light text-primary btn-lg w-100 mt-4 mb-0" %>
     <% end %>
-    <%= link_to 'Voltar', root_path %>
 </div>

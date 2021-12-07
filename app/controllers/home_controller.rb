@@ -6,5 +6,6 @@ class HomeController < ApplicationController
         @post = Post.find(params[:id])
         @comments = Comment.order(:created_at)
         @comment = Comment.new
+        @comments_current_post = Comment.where(:post_id = @post.id)
     end
 end

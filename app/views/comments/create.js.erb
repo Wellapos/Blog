@@ -1,2 +1,2 @@
-$('#lista-comentarios').html(render _comentarios @comments)
-$(comment_form).clear;
+$('#lista-comentarios').html( '<%= j(render "home/comments", comments: @comments) %>' );
+$('#comentarios')[0].reset();
