@@ -1,20 +1,33 @@
 <% @comments.each do |comment|%>
-    <% if @post.id == comment.post_id%>
-        <div class="row align-items-start shadow-info">
-            <hr>
-            <div class="col-2 fas fa-user">
-                <%= comment.content%>
-                <%= comment.user.email%>
-                <%= comment.created_at%>
-            </div>
-            <div class="col-4">
-                
-            </div>
-            <div class="col-5">
-                <%= link_to 'Deletar', comment_path(id: comment.id), method: :delete, data: { confirm: "Tem certeza?" }, class: "fas fa-trash d-flex justify-content-end" %>
-            </div>
+    <div class="row align-items-start shadow-info">
+        <hr>
+        <div class="col-2 fas fa-user">
+            <%= comment.content%>
+            <%= comment.user.email%>
+            <%= comment.created_at%>
         </div>
-        <br>
-        <% else %>
-    <% end%>
+        <div class="col-4">
+        <%= form_with model: @comment_son, local: false, :html => { :id => 'comentario' } do |form| %>
+            <%= form.text_area :content%>
+            <%= form.hidden_field :post_id, value: comment.post_id %>
+            <%= form.hidden_field :comment_id, value: comment.id%>
+            <%= form.submit 'Responder' %>
+        <% end %>
+            <% comment.comments.each do |resposta|%>
+                <%= resposta.content%>
+                <%= resposta.user.email%>a
+                <%= resposta.created_at%>
+                <%= form_with model: @comment_son, local: false, :html => { :id => 'comentarios' } do |form| %>
+                    <%= form.text_area :content, size: "10x1"%>
+                    <%= form.hidden_field :post_id, value: comment.post_id %>
+                    <%= form.hidden_field :comment_id, value: comment.id%>
+                    <%= form.submit 'Responder' %>
+                <% end %>
+            <% end %>
+        </div>
+        <div class="col-5">
+            <%= link_to 'Deletar', comment_path(id: comment.id), method: :delete, data: { confirm: "Tem certeza?" }, class: "fas fa-trash d-flex justify-content-end" %>
+        </div>
+    </div>
+    <br>
 <% end %>

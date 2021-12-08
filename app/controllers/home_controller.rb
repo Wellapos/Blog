@@ -4,8 +4,8 @@ class HomeController < ApplicationController
     end
     def post
         @post = Post.find(params[:id])
-        @comments = Comment.order(:created_at)
         @comment = Comment.new
-        @comments_current_post = Comment.where(:post_id = @post.id)
+        @comments = Comment.where(post_id: @post.id).where(comment_id: nil).order(:created_at)
+        @comment_son = Comment.new
     end
 end

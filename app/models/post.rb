@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :comment
+  has_many :comment, dependent: :destroy
   has_one_attached :image
   has_many :post_cats, dependent: :destroy
   validates :name, length: { maximum: 50,
