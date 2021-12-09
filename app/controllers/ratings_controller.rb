@@ -1,10 +1,5 @@
-class CommentsController < ApplicationController
+class RatingController < ApplicationController
     layout 'admin'
-
-    def index
-        @comments = Comment.order(:created_at)
-        @users = User.order(:email)
-    end
 
     def new
         @post = Post.find(params[:id])

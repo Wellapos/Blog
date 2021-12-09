@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :posts
   resources :comments
   resources :readers
+  resources :users
   get "/post/id", to: "home#post", as: "home_post"
 
 end

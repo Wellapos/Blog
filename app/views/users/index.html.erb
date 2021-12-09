@@ -1,0 +1,27 @@
+<div class="card-body px-0 pb-2">
+    <div class="table-responsive p-0">
+        <table class="table align-items-center mb-0">
+            <thead>
+                <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nome</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Descrição</th>
+                    <th class="text-secondary opacity-7"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @users.each do |user|%>
+                    <tr>
+                        <td>
+                        <p class="font-weight-bold mb-0"><%= user.email %></p>
+                        </td>
+                        <td class="align-middle">
+                        <%= link_to 'Editar', edit_user_path(id: user.id), class: "btn btn-sm text-secondary font-weight-bold" %>
+                        <%= link_to 'Deletar', user_path(id: user.id), method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-sm text-white bg-primary font-weight-bold" %>
+                        </td>
+                    </tr>
+                <% end %>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

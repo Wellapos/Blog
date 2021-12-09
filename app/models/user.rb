@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_one :ability
   belongs_to :role
   has_many :comments
+  has_many :ratings
 
   def admin?
     role.id == 1

@@ -17,7 +17,7 @@ class PostsController < ApplicationController
         @post = Post.new(post_params)
         @post.user_id = current_user.id
         get_variable
-    
+
         if @post.save
             if params[:category_ids].present?
                 params[:category_ids].each do |id|

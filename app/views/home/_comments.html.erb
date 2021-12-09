@@ -26,7 +26,7 @@
             <% end %>
         </div>
         <div class="col-5">
-            <%= link_to 'Deletar', comment_path(id: comment.id), method: :delete, data: { confirm: "Tem certeza?" }, class: "fas fa-trash d-flex justify-content-end" %>
+            <%= link_to 'Deletar', comment_path(comment), method: :delete, remote: true, data: { confirm: "Tem certeza?" }, class: "fas fa-trash d-flex justify-content-end" %>
         </div>
     </div>
     <br>
