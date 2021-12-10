@@ -8,11 +8,16 @@
     <%= form_with model: @rating do |form| %>
         <div class="input-group input-group-outline mb-3">
             <label class="form-label"></label>
-            <%= form.text_area :value, class: "form-control", size: "60x10"%>
+            <%= form.text_area :value, class: "fas fa-star", size: "1x1"%>
         </div>
         <%= form.hidden_field :post_id, value: @post.id %>
         <%= form.submit 'Salvar', class: "" %>
     <% end %>
+    <div class="fas fa-star"></div>
+    <div class="fas fa-star"></div>
+    <div class="fas fa-star"></div>
+    <div class="fas fa-star"></div>
+    <div class="fas fa-star"></div>
     <h2>Comment</h2>
     <div id='lista-comentarios'>
         <%= render partial: 'comments' %>

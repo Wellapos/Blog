@@ -6,6 +6,7 @@ class PostsController < ApplicationController
     def index
         @posts = Post.order(:name)
         @users = User.order(:email)
+        @rating = Rating.where(post_id: @posts.id)
     end
 
     def new

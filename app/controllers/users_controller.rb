@@ -1,8 +1,14 @@
 class UsersController < ApplicationController
+    before_action :authenticate_user!
+    load_and_authorize_resource
     layout 'admin'
 
     def index
         @users = User.order(:email)
+    end
+
+    def new
+        @user = User.new
     end
 
     def edit
@@ -40,6 +46,6 @@ class UsersController < ApplicationController
 
     private
     def user_params
-        params.require(:user).permit(:email, :password)
+        params.require(:user).permit(:email, :password, :password_confirmation, :role_id)
     end
 end

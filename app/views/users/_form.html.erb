@@ -1,6 +1,6 @@
 <div class="card-body">
     <div>
-        <%= form_with model: @user do |form| %>
+        <%= form_with model: @user, url: user_create_path do |form| %>
             <div class="input-group input-group-outline mb-3">
                 <label class="form-label"></label>
                 <p class="text-rose m-2 font-weight-bold">  Email : </p>
@@ -10,6 +10,14 @@
                 <p class="text-rose m-2 font-weight-bold">  Password : </p>
                 <label class="form-label"></label>
                 <%= form.text_field :password, class: "form-control", maxlength: 50 %>
+            </div>
+            <div class="input-group input-group-outline mb-3">
+                <p class="text-rose m-2 font-weight-bold">  Password confirm : </p>
+                <label class="form-label"></label>
+                <%= form.text_field :password_confirmation, class: "form-control", maxlength: 50 %>
+            </div>
+            <div>
+                <%= form.select :role_id, options_for_select([['Admin', 1], ['Comentarista', 2], ['Leitor', 3]], @user.role_id) %>
             </div>
             <div class="text-center">
                 <%= form.submit 'Salvar', class: "btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0" %>

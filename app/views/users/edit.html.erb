@@ -1,9 +1,42 @@
-<div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
+<div class="d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
     <div class="card card-plain">
         <div class="card-header">
             <h4 class="font-weight-bolder">user</h4>
             <p class="mb-0">Editando user <%= @user.email %> </p>
         </div>
-        <%= render partial: 'form' %>
+        <%= form_with model: @user do |form| %>
+            <div class="input-group input-group-outline mb-3">
+                <%= form.text_field :email, class:'form-control', placeholder: 'email', :maxlength => 20 %>
+            </div>
+            <div class="input-group input-group-outline mb-3">
+                <%= form.password_field :password, class:'form-control', disabled: true, placeholder: 'password', :maxlength => 250 %>
+            </div>
+            <div class="input-group input-group-outline mb-3">
+                <%= form.password_field :password_confirmation, class: 'form-control', disabled: true, placeholder: 'password again' %>  
+            </div>
+            <div class="bg-white text-center">
+                <input type="checkbox" id="pass" name="pass">
+                <label for="pass">alterar senha?</label>
+            </div>
+            <div class="input-group input-group-outline justify-content-center">
+                <%= form.select :role_id, options_for_select([['Admin', 1], ['Comentarista', 2], ['Leitor', 3]], @user.role_id), class: 'text-center' %>
+            </div>
+            <div class="text-center">
+                <%= form.submit 'Salvar', class:'btn btn-lg bg-gradient-secondary btn-lg w-100 mt-4 mb-0' %>
+                <%= link_to 'Cancelar', users_path, class:'btn btn-lg bg-gradient-secondary btn-lg w-100 mt-4 mb-0' %>
+            </div>
+        <% end %>
     </div>
 </div>
+<script>
+    $( "#pass" ).click(function() {
+        if ($('#pass').is(":checked") == true) {
+            $('#user_password').attr("disabled", false);
+            $('#user_password_confirmation').attr("disabled", false);
+        }
+        else { 
+            $('#user_password').attr("disabled", 'disabled');
+            $('#user_password_confirmation').attr("disabled", 'disabled');
+        }
+    })
+</script>

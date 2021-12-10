@@ -8,6 +8,7 @@
                     <th class="text-secondary opacity-7"></th>
                 </tr>
             </thead>
+            <%= link_to "New user", new_user_path, :method => :get, :class => 'btn btn-outline-primary bg-gradient-light text-rose navbar-link'  %>
             <tbody>
                 <% @users.each do |user|%>
                     <tr>
