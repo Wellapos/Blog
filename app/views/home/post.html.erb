@@ -5,19 +5,63 @@
     </div>
     <h2><%=h @post.content %></h2>
     <h2>Avaliação</h2>
-    <%= form_with model: @rating do |form| %>
+    <%= form_with model: @rating do |f| %>
         <div class="input-group input-group-outline mb-3">
-            <label class="form-label"></label>
-            <%= form.text_area :value, class: "fas fa-star", size: "1x1"%>
+            <% (1..5).each do |rating| %>
+                <%= f.label :value, for:rating.to_i do %>
+                    <i class="fas fa-star" id="b<%= rating%>"></i>
+                <% end %>
+                <%= f.radio_button :value, rating.to_i, id:rating, style:"display:none;"%>
+            <% end %>
+            <%= f.hidden_field :post_id, value: @post.id %>
+            <%= f.submit 'Salvar', class: "" %>
         </div>
-        <%= form.hidden_field :post_id, value: @post.id %>
-        <%= form.submit 'Salvar', class: "" %>
     <% end %>
-    <div class="fas fa-star"></div>
-    <div class="fas fa-star"></div>
-    <div class="fas fa-star"></div>
-    <div class="fas fa-star"></div>
-    <div class="fas fa-star"></div>
+    <h2>Avaliações</h2>
+    <% @ratings.each do |rating|%>
+        <%= rating.user.email%>
+        <%= rating.value%>
+        <br>
+    <%end%>
+    <%=  number_with_precision(@average, precision: 2)%>
+
+    <script>
+    $('#b1').click(function(){
+        $('#b1').css("color", "yellow");
+        $('#b2').css("color", "gray");
+        $('#b3').css("color", "gray");
+        $('#b4').css("color", "gray");
+        $('#b5').css("color", "gray");
+    })
+    $('#b2').click(function(){
+        $('#b1').css("color", "yellow");
+        $('#b2').css("color", "yellow");
+        $('#b3').css("color", "gray");
+        $('#b4').css("color", "gray");
+        $('#b5').css("color", "gray");
+    })
+    $('#b3').click(function(){
+        $('#b1').css("color", "yellow");
+        $('#b2').css("color", "yellow");
+        $('#b3').css("color", "yellow");
+        $('#b4').css("color", "gray");
+        $('#b5').css("color", "gray");
+    })
+    $('#b4').click(function(){
+        $('#b1').css("color", "yellow");
+        $('#b2').css("color", "yellow");
+        $('#b3').css("color", "yellow");
+        $('#b4').css("color", "yellow");
+        $('#b5').css("color", "gray");
+    })
+    $('#b5').click(function(){
+        $('#b1').css("color", "yellow");
+        $('#b2').css("color", "yellow");
+        $('#b3').css("color", "yellow");
+        $('#b4').css("color", "yellow");
+        $('#b5').css("color", "yellow");
+    })
+    </script>
     <h2>Comment</h2>
     <div id='lista-comentarios'>
         <%= render partial: 'comments' %>

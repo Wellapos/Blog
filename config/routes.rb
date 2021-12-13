@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   resources :comments
   resources :readers
   resources :users
+  resources :ratings
   post '/create/user', to: 'users#create', as: 'user_create'
-  get "/post/id", to: "home#post", as: "home_post"
+  get "/post/:id", to: "home#post", as: "home_post"
 
 end

@@ -1,0 +1,6 @@
+<% @rating.each do |rating|%>
+    <%= rating.user.email%>
+    <%= rating.value%>
+    <br>
+<%end%>
+<%= @average%>
