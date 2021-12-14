@@ -1,0 +1,2 @@
+$('#lista-ratings').html( '<%= j(render "home/ratings", rating: @rating) %>' );
+$('#average-post').html( '<%= j(number_with_precision(@average, precision: 2)) %>' );

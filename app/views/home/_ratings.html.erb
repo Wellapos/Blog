@@ -1,0 +1,10 @@
+<% @ratings.each do |rating|%>
+    <%= rating.user.email%>
+    <%= rating.value%>
+    <br>
+<%end%>
+<h4>A media geral do post é: 
+<span id="average-post">
+    <%=  number_with_precision(@average, precision: 2)%>
+</span>
+</h4>

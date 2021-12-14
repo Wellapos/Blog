@@ -4,9 +4,12 @@ class PostsController < ApplicationController
     layout 'admin', except: :show
 
     def index
-        @posts = Post.order(:name)
-        @users = User.order(:email)
-        @rating = Rating.where(post_id: @posts.id)
+        @posts = Post.select('posts.id, posts.name, AVG(ratings.value) as media')
+                    .joins("LEFT JOIN ratings ON ratings.post_id = posts.id")
+                    .group("posts.id")
+                    .order(created_at: :desc)
+
+                    @users = User.order(:email)
     end
 
     def new

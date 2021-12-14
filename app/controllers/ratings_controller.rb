@@ -3,6 +3,7 @@ class RatingsController < ApplicationController
     
     def index
         @rating = Rating.order(params[:post_id])
+        @ratings = Rating.order(params[:id])
     end
 
     def new
@@ -12,12 +13,19 @@ class RatingsController < ApplicationController
     end
 
     def create
-        @rating = Rating.new(rating_params)
-        get_variable
-        @rating.user_id = current_user.id
-
-        if @rating.save
+        @ratings = Rating.order(params[:id])
+        @rating = Rating.where(user_id: current_user.id, post_id: params[:rating][:post_id]).first
+        if @rating.present?
+            @rating.update(rating_params)
+        else 
+            @rating = Rating.new(rating_params)
+            @rating.user_id = current_user.id
+            @rating.save
+            respond_to do |format|
+                format.js
+            end
         end
+        @average = Rating.where(post_id: @rating.post_id).average('value')
     end
 
     def edit

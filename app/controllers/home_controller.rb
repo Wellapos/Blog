@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
     def index
-        @posts = Post.order(:name)
+        @posts = Post.select("posts.id, posts.name, posts.summary, posts.created_at, AVG(ratings.value) as media").joins(:ratings).group("posts.id").order(created_at: :desc)
     end
     def post
         @ratings = Rating.order(params[:id])

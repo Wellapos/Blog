@@ -7,8 +7,9 @@
             <% end %>
             <thead>
                 <tr>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nome</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Descrição</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Titulo</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Media de Avaliação</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Imagem</th>
                     <th class="text-secondary opacity-7"></th>
                 </tr>
             </thead>
@@ -17,6 +18,9 @@
                     <tr>
                         <td>
                             <p class="font-weight-bold mb-0"><%= post.name %></p>
+                        </td>
+                        <td>
+                            <p class="font-weight-bold mb-0"><%= post.media %></p>
                         </td>
                         <td>
                             <%= image_tag post.image.variant(resize_to_limit: [100, 100]) %>
