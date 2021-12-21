@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
     before_action :authenticate_user!
     load_and_authorize_resource
-    layout 'admin', except: :show
+    layout 'admin'
 
     def index
         @posts = Post.select('posts.id, posts.name, AVG(ratings.value) as media')
@@ -28,7 +28,6 @@ class PostsController < ApplicationController
                     PostCat.create(post_id: @post.id, category_id: id)
                 end
             end
-            
             redirect_to posts_path
         else
             render :new, status: :unprocessable_entity
@@ -58,7 +57,6 @@ class PostsController < ApplicationController
             else
                 @post.post_cats.destroy_all
             end
-
             redirect_to posts_path
         else
             render :edit, status: :unprocessable_entity
@@ -83,5 +81,4 @@ class PostsController < ApplicationController
     def post_params
         params.require(:post).permit(:name, :summary, :content, :image)
     end
-
 end

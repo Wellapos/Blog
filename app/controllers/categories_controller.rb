@@ -38,10 +38,15 @@ class CategoriesController < ApplicationController
     def destroy
         @category = Category.find(params[:id])
         
-        if @category.present?
-            @category.destroy 
+        if @category.destroy
+            message = "Excluido com sucesso!"
+        else
+            message = @category.errors.full_messages
         end
-        redirect_to categories_path
+
+        respond_to do |format|
+            format.html { redirect_to categories_path, notice: message }
+        end
     end
     
     private

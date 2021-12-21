@@ -3,12 +3,12 @@
         <%= form_with model: @comment do |form| %>
             <div class="input-group input-group-outline mb-3">
                 <label class="form-label"></label>
-                <%= form.text_area :content, class: "form-control", size: "60x10"%>
+                <%= form.text_area :content, class: "form-control", size: "50x8", :maxlength => 15%>
             </div>
             <%form.hidden_field :post_id %>
             
             <div class="text-center">
-                <%= form.submit 'Salvar', class: "btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0" %>
+                <%= form.submit 'Comentar', class: "btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0" %>
                 <%= link_to 'Cancelar', comments_path, class: "btn btn-lg bg-gradient-light text-primary btn-lg w-100 mt-4 mb-0" %>
             </div>
         <% end %>

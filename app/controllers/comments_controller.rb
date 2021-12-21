@@ -34,12 +34,14 @@ class CommentsController < ApplicationController
     def destroy
         @comment = Comment.find(params[:id])
         @comments = Comment.where(post_id: @comment.post_id).where(comment_id: nil).order(:created_at)
-        if @comment.present?
-            @comment.destroy
+        if @comment.destroy
+            message = 'Comentario excluido com sucesso'
             respond_to do |format|
                 format.js
+                format.html { redirect_to post_path, notice: message }
             end
         else
+            message = @comment.errors.full_messages
             redirect_to comments_path
         end
     end

@@ -3,6 +3,12 @@
         <div class="card-header">
             <h4 class="font-weight-bolder">Post</h4>
             <p class="mb-0">Criando um novo Post</p>
+            <% if notice %>
+            <p class="alert"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+            <p class="alert"><%= alert %></p>
+        <% end %>
         </div>
         <%= render partial: 'form' %>
     </div>

@@ -1,61 +1,63 @@
-<div class="container">
+<div class="container bg-gradient-light bd-3 rounded-2">
     <h1 class="text-center" ><%=h @post.name %></h1>
-    <div class="img-fluid">
-        <%=image_tag @post.image.variant(resize_to_limit: [922, 650])%>
+    <%=image_tag @post.image.variant(resize_to_limit: [922, 650]), class:'img-fluid mx-auto d-block'%>
+    <div class="font-size mx-2 d-flex">
+        <h5 class="text-break text-dark"><%=h @post.content %></h5>
     </div>
-    <h2><%=h @post.content %></h2>
-    <h2>Avaliação</h2>
-    <%= form_with model: @rating, local: false do |f| %>
-        <div class="input-group input-group-outline mb-3">
-            <% (1..5).each do |rating| %>
-                <%= f.label :value, for:rating.to_i do %>
-                    <i class="fas fa-star" id="b<%= rating%>"></i>
+    <div class="row align-items-start shadow-info">
+        <hr>
+        <h2>Avaliação</h2>
+        <%= form_with model: @rating, local: false do |f| %>
+            <div class="input-group input-group-outline mb-3">
+                <% (1..5).each do |rating| %>
+                    <%= f.label :value, for:rating.to_i do %>
+                        <i class="fas fa-star fa-2x" id="b<%= rating%>"></i>
+                    <% end %>
+                    <%= f.radio_button :value, rating.to_i, id:rating, style:"display:none;"%>
                 <% end %>
-                <%= f.radio_button :value, rating.to_i, id:rating, style:"display:none;"%>
-            <% end %>
-            <%= f.hidden_field :post_id, value: @post.id %>
-            <%= f.submit 'Avaliar', class: "" %>
+                <%= f.hidden_field :post_id, value: @post.id %>
+                <%= f.submit 'Avaliar', class: "" %>
+            </div>
+        <% end %>
+        <div id="lista-ratings">
+            <%= render partial: 'ratings' %>
         </div>
-    <% end %>
-    <h2>Avaliações</h2>
-    <div id="lista-ratings">
-        <%= render partial: 'ratings' %>
     </div>
     <script>
         $('#b1').click(function(){
-            $('#b1').css("color", "yellow");
+            $('#b1').css("color", "#DBE518");
             $('#b2').css("color", "gray");
             $('#b3').css("color", "gray");
             $('#b4').css("color", "gray");
             $('#b5').css("color", "gray");
         })
         $('#b2').click(function(){
-            $('#b1').css("color", "yellow");
-            $('#b2').css("color", "yellow");
+            $('#b1').css("color", "#DBE518");
+            $('#b2').css("color", "#DBE518");
             $('#b3').css("color", "gray");
             $('#b4').css("color", "gray");
             $('#b5').css("color", "gray");
         })
         $('#b3').click(function(){
-            $('#b1').css("color", "yellow");
-            $('#b2').css("color", "yellow");
-            $('#b3').css("color", "yellow");
+            $('#b1').css("color", "#DBE518");
+            $('#b2').css("color", "#DBE518");
+            $('#b3').css("color", "#DBE518");
             $('#b4').css("color", "gray");
             $('#b5').css("color", "gray");
         })
         $('#b4').click(function(){
-            $('#b1').css("color", "yellow");
-            $('#b2').css("color", "yellow");
-            $('#b3').css("color", "yellow");
-            $('#b4').css("color", "yellow");
+            $('#b1').css("color", "#DBE518");
+            $('#b2').css("color", "#DBE518");
+            $('#b3').css("color", "#DBE518");
+            $('#b4').css("color", "#DBE518");
             $('#b5').css("color", "gray");
         })
         $('#b5').click(function(){
-            $('#b1').css("color", "yellow");
-            $('#b2').css("color", "yellow");
-            $('#b3').css("color", "yellow");
-            $('#b4').css("color", "yellow");
-            $('#b5').css("color", "yellow");
+            $('#b1').css("color", "#DBE518");
+            $('#b2').css("color", "#DBE518");
+            $('#b3').css("color", "#DBE518");
+            $('#b4').css("color", "#DBE518");
+            $('#b5').css("color", "#DBE518");
         })
     </script>
     <h2>Comment</h2>
@@ -63,12 +65,10 @@
         <%= render partial: 'comments' %>
     </div>
     <%= form_with model: @comment, local: false, :html => { :id => 'comentarioss' } do |form| %>
-        <div class="input-group input-group-outline mb-3">
-            <label class="form-label"></label>
-            <%= form.text_area :content, class: "form-control", size: "60x10"%>
+        <div class="input-group input-group-outline mb-3 text-dark">
+            <%= form.text_area :content, class: "form-control", size: "50x8", maxlenth: 50%>
         </div>
-        <%= form.hidden_field :post_id, value: @post.id %>
-        <%= form.submit 'Salvar', class: "btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0" %>
-        <%= link_to '', comments_path, class: "btn btn-lg bg-gradient-light text-primary btn-lg w-100 mt-4 mb-0" %>
+            <%= form.hidden_field :post_id, value: @post.id %>
+            <%= form.submit 'Comentar', class: "btn btn-sm bg-gradient-primary btn-lg w-100 mt-4 mb-0" %>
     <% end %>
 </div>

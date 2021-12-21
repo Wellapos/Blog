@@ -1,32 +1,40 @@
 <% @comments.each do |comment|%>
     <div class="row align-items-start shadow-info">
-        <hr>
-        <div class="col-2 fas fa-user">
-            <%= comment.content%>
-            <%= comment.user.email%>
-            <%= comment.created_at%>
-        </div>
-        <div class="col-4">
-        <%= form_with model: @comment_son, local: false, :html => { :id => 'comentario' } do |form| %>
-            <%= form.text_area :content%>
-            <%= form.hidden_field :post_id, value: comment.post_id %>
-            <%= form.hidden_field :comment_id, value: comment.id%>
-            <%= form.submit 'Responder' %>
-        <% end %>
-            <% comment.comments.each do |resposta|%>
-                <%= resposta.content%>
-                <%= resposta.user.email%>a
-                <%= resposta.created_at%>
-                <%= form_with model: @comment_son, local: false, :html => { :id => 'comentarios' } do |form| %>
-                    <%= form.text_area :content, size: "10x1"%>
+        <hr> 
+        <div class="col">
+            <div class=" fas fa-user ">
+                <div class="text-dark">
+                    <%= comment.user.email%>
+                    <%= comment.created_at%>
+                </div>
+                <div class="text-break">
+                    <%= comment.content%>
+                </div>
+            </div>
+            <div class="">
+                <%= form_with model: @comment_son, local: false, :html => { :id => 'comentario' } do |form| %>
+                    <%= form.text_area :content, :maxlenth => 15%>
                     <%= form.hidden_field :post_id, value: comment.post_id %>
                     <%= form.hidden_field :comment_id, value: comment.id%>
-                    <%= form.submit 'Responder' %>
+                    <%= form.submit 'Responder', class:'btn btn-sm btn-dark'%>
                 <% end %>
-            <% end %>
-        </div>
-        <div class="col-5">
-            <%= link_to 'Deletar', comment_path(comment), method: :delete, remote: true, data: { confirm: "Tem certeza?" }, class: "fas fa-trash d-flex justify-content-end" %>
+                <div class="container-fluid">
+                    <% comment.comments.each do |resposta|%>
+                        <div class="text-dark fas fa-user">
+                            <%= resposta.user.email%>
+                            <%= resposta.created_at%>
+                        </div>
+                        <div class="text-break container-fluid">
+                            <%= resposta.content%>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+            <div class="">
+                <% if comment.user_id == current_user.id || current_user.role_id == 1 %>
+                        <%= link_to 'Deletar', comment_path(comment), method: :delete, remote: true, data: { confirm: "Tem certeza?" }, class: "btn btn-danger btn-sm fas fa-trash justify-content-end" %>
+                <% end %>
+            </div>
         </div>
     </div>
     <br>
