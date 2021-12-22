@@ -3,7 +3,7 @@
         <%= form_with model: @comment do |form| %>
             <div class="input-group input-group-outline mb-3">
                 <label class="form-label"></label>
-                <%= form.text_area :content, class: "form-control", size: "50x8", :maxlength => 15%>
+                <%= form.text_area :content, class: "bg-light border-radios-lg w-70", size: "60x10", :maxlength => 15%>
             </div>
             <%form.hidden_field :post_id %>
             
